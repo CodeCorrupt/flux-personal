@@ -4,3 +4,4 @@ namespace: longhorn-system
 resources:
   - namespace.yaml
   - helm.yaml
+  - ingressroute.yaml
