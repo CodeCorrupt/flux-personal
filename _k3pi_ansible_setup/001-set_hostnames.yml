@@ -1,0 +1,17 @@
+---
+- hosts: cluster
+  become: yes
+  tasks:
+    - name: Set Hostname
+      ansible.builtin.hostname:
+        name: "{{ var_hostname }}"
+
+    - name: Echo Hostname
+      ansible.builtin.shell: hostname
+      register: ret_hostname
+      changed_when: no
+    
+    - name: Print New Hostname
+      ansible.builtin.debug:
+        msg: "New Hostname is: {{ ret_hostname.stdout }}"
+      failed_when: "var_hostname not in ret_hostname.stdout"

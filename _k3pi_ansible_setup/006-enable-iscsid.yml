@@ -1,0 +1,14 @@
+---
+- hosts: cluster
+  become: yes
+  tasks:
+    - name: apt install open-iscsi
+      ansible.builtin.apt:
+        name: open-iscsi
+        state: present
+        update_cache: yes
+    - name: Enable iscsid
+      ansible.builtin.systemd:
+        name: iscsid
+        state: started
+        enabled: yes

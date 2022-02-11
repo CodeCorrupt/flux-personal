@@ -1,0 +1,17 @@
+---
+- hosts: cluster
+  become: yes
+  tasks:
+    - name: apt install ntp
+      ansible.builtin.apt:
+        name: ntp
+        state: present
+        update_cache: yes
+    - name: Enable ntp
+      ansible.builtin.systemd:
+        name: ntp
+        state: started
+        enabled: yes
+    - name: Set timezone to US/Eastern
+      community.general.timezone:
+        name: US/Eastern

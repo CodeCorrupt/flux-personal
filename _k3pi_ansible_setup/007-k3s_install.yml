@@ -1,0 +1,77 @@
+---
+- hosts: cluster
+  gather_facts: no
+  tasks:
+    - name: Set Facts
+      set_fact:
+        token: <Put_random_string_here>
+
+- hosts: primary_master
+  become: yes
+  tasks:
+    
+    - name: Check for kubeconfig
+      ansible.builtin.stat:
+        path: /etc/rancher/k3s/k3s.yaml
+      register: st_kubeconfig
+
+    - name: Install k3s
+      ansible.builtin.shell:
+        cmd: |
+          curl -sfL https://get.k3s.io | \
+          K3S_TOKEN="{{ token }}" \
+          sh -s - server --cluster-init \
+          --disable servicelb \
+          --disable traefik \
+          --disable local-storage
+      when: not st_kubeconfig.stat.exists
+
+    - name: Get kubeconfig
+      ansible.builtin.fetch:
+        src: /etc/rancher/k3s/k3s.yaml
+        dest: ~/.kube/config.new_from_ansible
+        flat: yes
+
+- hosts: secondary_masters
+  become: yes
+  tasks:
+    - name: Check for kubeconfig
+      ansible.builtin.stat:
+        path: /etc/rancher/k3s/k3s.yaml
+      register: st_kubeconfig
+
+    - name: Install k3s
+      ansible.builtin.shell:
+        cmd: |
+          curl -sfL https://get.k3s.io | \
+          K3S_TOKEN="{{ token }}" \
+          sh -s - server --server https://{{ groups['primary_master'][0] }}:6443 \
+          --disable servicelb \
+          --disable traefik \
+          --disable local-storage
+      when: not st_kubeconfig.stat.exists
+
+- hosts: masters
+  become: yes
+  tasks:
+    - name: Add kubeconfig to environment
+      ansible.builtin.lineinfile:
+        path: /etc/environment
+        line: 'KUBECONFIG=/etc/rancher/k3s/k3s.yaml'
+
+- hosts: workers
+  become: yes
+  tasks:
+    - name: Check if k3s is already installed
+      ansible.builtin.stat:
+        path: /etc/rancher/node/password
+      register: st_password
+
+    - name: Install k3s
+      ansible.builtin.shell:
+        cmd: |
+          curl -sfL https://get.k3s.io | \
+          K3S_URL="https://{{ groups['primary_master'][0] }}:6443" \
+          K3S_TOKEN="{{ token }}" \
+          sh -
+      when: not st_password.stat.exists

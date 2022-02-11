@@ -1,0 +1,8 @@
+---
+- hosts: cluster
+  become: yes
+  tasks:
+    - name: Upgrade OS With apt
+      ansible.builtin.apt:
+        upgrade: yes
+        update_cache: yes

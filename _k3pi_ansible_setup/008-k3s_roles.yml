@@ -1,0 +1,8 @@
+---
+- hosts: primary_master
+  become: yes
+  tasks:
+    - name: Set worker node labels
+      ansible.builtin.shell:
+        cmd: kubectl label nodes {{ hostvars[item]['var_hostname'] }} kubernetes.io/role=worker
+      loop: "{{ groups['workers'] }}"
