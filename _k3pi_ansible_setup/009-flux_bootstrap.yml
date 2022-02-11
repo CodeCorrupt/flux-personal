@@ -1,0 +1,30 @@
+# THIS IS UNTESTED CURRENTLY!
+# Already deployed manually before I thought to make this.
+# Will test next time I rebuild the cluster.
+---
+- hosts: primary_master
+  become: yes
+  vars_prompt:
+    - name: GITHUB_TOKEN
+      prompt: GITHUB_TOKEN - GitHub personal access token
+    - name: GITHUB_USERNAME
+      prompt: --owner - GitHub user or organization name
+    - name: GITHUB_REPO
+      prompt: --repository - GitHub repository name
+    - name: GITHUB_PATH
+      prompt: --path - Path relative to the repo root to put flux-system configs.
+  tasks:
+    - name: Install Flux
+      ansible.builtin.shell:
+        cmd: curl -s https://fluxcd.io/install.sh | sudo bash
+
+    - name: Bootstrap flux
+      ansible.builtin.shell:
+        cmd: |
+          flux bootstrap github \
+            --owner={{ GITHUB_USERNAME }} \
+            --repository={{ GITHUB_REPO }} \
+            --path={{ GITHUB_PATH }} \
+            --personal
+      environment:
+        GITHUB_TOKEN: "{{ GITHUB_TOKEN }}"
