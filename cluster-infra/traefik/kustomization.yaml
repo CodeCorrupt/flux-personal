@@ -4,3 +4,4 @@ namespace: traefik-system
 resources:
   - namespace.yaml
   - helm.yaml
+  - dashboard-ingress.yaml
