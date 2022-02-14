@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: influx-frontend
+  namespace: monitoring
+spec:
+  routes:
+  - kind: Rule
+    match: Host(`influx.k3s`)
+    services:
+    - kind: Service
+      name: influxdb-influxdb2
+      namespace: monitoring
+      port: 80
