@@ -5,6 +5,10 @@ metadata:
   name: influxdb
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   interval: 10m0s
   path: ./infrastructure/influxdb
   prune: true

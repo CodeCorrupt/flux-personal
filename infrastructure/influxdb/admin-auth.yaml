@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: influxdb-auth
+type: Opaque
+data:
+    admin-password: ENC[AES256_GCM,data:gAJUDzAvgL5yK656cQ==,iv:OCJkCGsCTpWopkkM7h6JZWw9GoE0LxA/XvjgZlDm4do=,tag:krJ5A3Eb9xBSk93Yku/Z6Q==,type:str]
+    admin-token: ENC[AES256_GCM,data:77SVuUBj9BHWtxdeYZYDbGvh7QBHXoJemsWoNty38nI=,iv:LkqzwKq2NCtFniu13gSC5EHqM5OA7ahcfgmV2Kzspak=,tag:zYN9fbiIOe+owzKrbQ8OFQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-02-15T17:46:53Z"
+    mac: ENC[AES256_GCM,data:YWU5KLc6cGQyHcLV2L0N+vHb3exDXrhIUhaUbCjYySSwK68OjZ3ZHxblV8poQL58Q8RcyLPfF0Dr+zgqTp5A4HXB0RjHvkeSNSoRQJBnWRBQ4q7SuS87nNT3CqBiK/pt6oE718vBhygWRx3r5HohxqTwPKR6j87HK0outSnh8ZI=,iv:d3d4DFMffvYUvlIlv29HXWlOUaSabAbjtzAigI1Drg4=,tag:Uu1rUbV/UkhrhqMWXzodQg==,type:str]
+    pgp:
+        - created_at: "2022-02-15T17:46:52Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAzRgeFoHkc8aARAAqiL/WhlMsTTKnh6bshRQGqnL5RfomnXzfSuZFTykstxM
+            qgXR6/2Y2rD8JWurhJ7HdgVNmdfe7HqHnlacOb4Y19zIZiLD1g/6rLwBnKa8YAdc
+            9a1QUelnj71NmDu/Wnd1XD4aNBCz8vaqEIUpilgqA5J6DkDGS9UAfgpyW5kx8h0g
+            FwduSGPH0MSTf3HQjlt16zz9DE/amsXRVxvWVQkTfiDMZO+hPcoPWaXQ0uHQPK6m
+            coB1PfFehOpSIYE0Xr2WSCSxv50eEPlDTK4UWNPTFqadYR9Y1DyM7yxYhxYWgwB+
+            vbPsUcXIADWwomosr6APjGotIiZVZaeXWM3XNT5iWhiu3JzgBRsWIvjbx7iepW9a
+            WUgRNf3YEyGljcKA/3x8nywlYZETV2mqBHuEzEdGMn6NPmhzIAfqFC9ssIrUps5m
+            U69vlt9Ee7RawXnW0W1Kkr2UuKRsv/4Jv9JuvnTzLBYUjnt+q9KRdfWcogFJ0Sr5
+            gSezrhU7kla4mmIIIYNYU2ZEiTFlHU6R5UEBlGk4D6dPwVOOcjA9uwlPc7a1Rf+d
+            nZL3sNqHuN/0edyEZIQz+G5/rAVyhgey/ROSwS8JwkVCCZfEsEw0v3HlODlwLrZM
+            a5B4VpxyrF2VCuHfcaSiVQfnPCxTI/0QLJdacfM4GwjF208ksGb7ArPzstoChPzU
+            ZgEJAhCjlPg2WAcsy9Gv8SILi3azz6n6kmJuE6j9uJWjQ+n4n2XsAHUhzAFmWbE7
+            bHVHUWuwm72V0kHXvRKdWquvuSgdxOwiLYcKKl12Eyhx1i/6hJDUCeup+d04ge/z
+            hhkhetAj+Q==
+            =eo8P
+            -----END PGP MESSAGE-----
+          fp: 97035DBA837B72727A922DD16F33B78B284BE27E
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.1
