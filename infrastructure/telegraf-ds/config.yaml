@@ -1,0 +1,55 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: telegraf-ds
+data:
+  telegraf.conf: |+
+    [agent]
+      collection_jitter = "0s"
+      debug = false
+      flush_interval = "10s"
+      flush_jitter = "0s"
+      hostname = "$HOSTNAME"
+      interval = "10s"
+      logfile = ""
+      metric_batch_size = 1000
+      metric_buffer_limit = 10000
+      omit_hostname = false
+      precision = ""
+      quiet = false
+      round_interval = true
+
+
+    [[outputs.influxdb_v2]]
+      urls = [
+        "http://influxdb-influxdb2.monitoring.svc:80"
+      ]
+      token = "$INFLUXDB_API_TOKEN"
+      bucket = "cluster_metrics"
+      organization = "varnost"
+
+
+    [[inputs.internal]]
+
+    [[inputs.diskio]]
+    [[inputs.kernel]]
+    [[inputs.mem]]
+    [[inputs.net]]
+    [[inputs.processes]]
+    [[inputs.swap]]
+    [[inputs.system]]
+
+    [[inputs.cpu]]
+    percpu = true
+    totalcpu = true
+    collect_cpu_time = false
+    report_active = false
+
+    [[inputs.disk]]
+    ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
+
+    [[inputs.kubernetes]]
+    url = "https://$HOSTIP:10250"
+    bearer_token = "/var/run/secrets/kubernetes.io/serviceaccount/token"
+    insecure_skip_verify = true

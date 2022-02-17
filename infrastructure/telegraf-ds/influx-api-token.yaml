@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: influxdb-auth
+type: Opaque
+data:
+    INFLUXDB_API_TOKEN: WDJReXJhWnFMTVVWSGcyaDFvV0xYYjlpMHA2RjRmX2hPTnlTVmlRcUdSVDZxQUdkeTJmXzVMNm95RFZzMWR5NXpDTkVhUE1xRXlqdEdjd1N5X1VhNUE9PQ==

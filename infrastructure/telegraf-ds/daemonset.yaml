@@ -1,0 +1,68 @@
+---
+# Source: telegraf-ds/templates/daemonset.yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: telegraf-ds
+spec:
+  selector:
+    matchLabels:
+      name: telegraf-ds
+  template:
+    metadata:
+      labels:
+        name: telegraf-ds
+    spec:
+      serviceAccountName: telegraf-ds
+      containers:
+      - name: telegraf-ds
+        image: "telegraf:1.21"
+        imagePullPolicy: "IfNotPresent"
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: 512Mi
+          requests:
+            cpu: "0.1"
+            memory: 256Mi
+        envFrom:
+          - secretRef:
+              name: influx-telegraf-ds-token
+        env:
+        - name: HOSTIP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: HOSTIP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: HOST_PROC
+          value: /hostfs/proc
+        - name: HOST_SYS
+          value: /hostfs/sys
+        - name: HOST_MOUNT_PREFIX
+          value: /hostfs
+        volumeMounts:
+        - name: varrunutmpro
+          mountPath: /var/run/utmp
+          readOnly: true
+        - name: hostfsro
+          mountPath: /hostfs
+          readOnly: true
+        - name: config
+          mountPath: /etc/telegraf
+      volumes:
+      - name: hostfsro
+        hostPath:
+          path: /
+      - name: varrunutmpro
+        hostPath:
+          path: /var/run/utmp
+      - name: config
+        configMap:
+          name:  release-name-telegraf-ds
