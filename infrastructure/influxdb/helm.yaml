@@ -27,9 +27,8 @@ spec:
   values:
     adminUser:
       organization: varnost
+      existingSecret: influxdb-auth
     persistence:
       enabled: true
       storageClass: longhorn
       size: 5Gi
-    ingress:
-      enabled: false
