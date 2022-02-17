@@ -4,16 +4,16 @@ metadata:
     name: influxdb-auth
 type: Opaque
 data:
-    admin-password: ENC[AES256_GCM,data:gAJUDzAvgL5yK656cQ==,iv:OCJkCGsCTpWopkkM7h6JZWw9GoE0LxA/XvjgZlDm4do=,tag:krJ5A3Eb9xBSk93Yku/Z6Q==,type:str]
-    admin-token: ENC[AES256_GCM,data:77SVuUBj9BHWtxdeYZYDbGvh7QBHXoJemsWoNty38nI=,iv:LkqzwKq2NCtFniu13gSC5EHqM5OA7ahcfgmV2Kzspak=,tag:zYN9fbiIOe+owzKrbQ8OFQ==,type:str]
+    admin-password: ENC[AES256_GCM,data:N9LNRuFOOlqy2y0m1kqc8xI1NCA=,iv:X6AP2Bw+83yC+hB0L9tqEMiv/7CEqYucZtFb2oiWxXE=,tag:F6NQJZFx1Al20sISCpVxUA==,type:str]
+    admin-token: ENC[AES256_GCM,data:RzjYB4+8oJxNkk/GlIs7r8NCqvXojCWBuxbi7Z+T/bpLzSJrrYwaQW8mFio=,iv:vFs8A8P3Rvyp+xSc0h07sjU5rcLDLF8ImVXQGKAD9TI=,tag:y6xQ73cn5MVgBr9LApEHXQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-02-15T17:46:53Z"
-    mac: ENC[AES256_GCM,data:YWU5KLc6cGQyHcLV2L0N+vHb3exDXrhIUhaUbCjYySSwK68OjZ3ZHxblV8poQL58Q8RcyLPfF0Dr+zgqTp5A4HXB0RjHvkeSNSoRQJBnWRBQ4q7SuS87nNT3CqBiK/pt6oE718vBhygWRx3r5HohxqTwPKR6j87HK0outSnh8ZI=,iv:d3d4DFMffvYUvlIlv29HXWlOUaSabAbjtzAigI1Drg4=,tag:Uu1rUbV/UkhrhqMWXzodQg==,type:str]
+    lastmodified: "2022-02-17T02:02:05Z"
+    mac: ENC[AES256_GCM,data:fCXu7FCXjxzRIGPizNiC8lzt+ZTmClExV1vxykteOCS40oEmcA3Afj8KI7JrejjLK/8e20Pv9k+R0idf16nx0Pk5kRHr4Q30/jbKdKwjUgXlZjkryHhC7rKT/N2SurtG32iEGQIonxRvrEjcJmGRZfXIJvY05pdeuirBKESfdSI=,iv:Soz7QELDh3RW/HrbI9PfiG4RIMTSbaxZ3oD54pgjPUo=,tag:a5N9/cUggn/pg3h8su1Xew==,type:str]
     pgp:
         - created_at: "2022-02-15T17:46:52Z"
           enc: |
