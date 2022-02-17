@@ -1,7 +1,39 @@
 apiVersion: v1
 kind: Secret
 metadata:
-    name: influxdb-auth
+    name: influx-telegraf-ds-token
 type: Opaque
 data:
-    INFLUXDB_API_TOKEN: WDJReXJhWnFMTVVWSGcyaDFvV0xYYjlpMHA2RjRmX2hPTnlTVmlRcUdSVDZxQUdkeTJmXzVMNm95RFZzMWR5NXpDTkVhUE1xRXlqdEdjd1N5X1VhNUE9PQ==
+    INFLUXDB_API_TOKEN: ENC[AES256_GCM,data:0gm7Czzdt4EnbyCqZzmCGkaC7DeO6zLU/U8y1EwEV8ksIbjm1lLPbFQOPa+v2LOIBUfEeRz5H/IyYIE6eVuu4VlvpRu6tZohziHEaNZMKHB1nHd7UYkjK9kL6Q1UiPVSppk05vIsBcBpywJKRGCrBkJX2R8bpRhh,iv:kJbfbM7WkyBikEoA/5w0SsV3+/HjIx1eWD8N6QcO16E=,tag:pZiRau2tdr0JzPKyjAyvcw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-02-17T21:07:15Z"
+    mac: ENC[AES256_GCM,data:mz+8T3fhiFE2BLTt2KiDARKh6ZDO2jLfMBTCMDj6AIpK6KR4OIaSiRLIyDkUoMEBuauE7W6vLjvTO6Ft8CjacBva4FlGrij63JAATDS/lfW5POENHFPDz3TpRBjk9u++YkaLND/aULnMjgAA/RvM8puBycijKD2ecX+fB3kNrQU=,iv:6AEzsQiYubiaO0IcSZSi1u/8urMGI8LvO8DiyZ77spU=,tag:nZuyxEllhHo9EDS57ETPOw==,type:str]
+    pgp:
+        - created_at: "2022-02-17T21:07:14Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAzRgeFoHkc8aAQ/+KTNLmuJ8D+dZvavYjVg//ARa0D2fGVh4y66WxySAxIO4
+            0lTudsXKfYZ0Mhguk5gwnxKJOyr2fO96nooNd0ZQYRymESqttKgNDTmux6hUsVoA
+            LY5lRYez56VHcUD6ZRo7bvDBir7w4V+hPDK/d+QpKrTKRwFyuWpBWPUil4F8k9YK
+            92mAh+csXdotUIhRWDoEdD55u3tCgt5rAKrZhdnswqNdZtHIVHP0qu++ixlw4wby
+            2n5Bms+90vOon+3Q0c15cKGXGAmKSURnbIZbdaRmx2PqR8FjLSbFDIL52yFwq4l7
+            Nv1UXLtddwW4SwW58B0+2DpcENu5cqcc8sX9FiHa63vqZmPsEf4PGoMyoNSNB3hj
+            naVHNctQQxy5HTBIGjT5t0iDUC7dK4oOVwSJx77AbArHfmeuGUY3xRxNUHbpBFzK
+            sqcRJqDhVQdybNozsY9gKppt9qsnoqw1+AR8udhbA+t6XddEmumIz71+DhwoHwd2
+            PD1ZaPFNgR2AnAbXE1EAnj4dTYXXDQURmIJ3vh/WNGGsW7b1BnV3yCwa1ar+xCeM
+            TyN5QVEJnoKY6IP1+u/8zUAA1X2mm4vmKJVoeEE1jecmpVDqMes2uZMNJKzeoDo9
+            anRGyC/PEQD4QxwGYsrF8RCZG83lAxr2Tt5VJNpQBMsIDp93rfjW77IkLZhy3TXU
+            aAEJAhD12i/36LyZ9zzbMklNc+qtsoMuxdEwTJ9fo7+SpAXhJjhRq8pr+fGFcz5e
+            DJAI5QgvNTk+yJApsmp+qBYpiO4/HIXh23llBYSkTS24mxkuwdf2ZO2spazA7EgO
+            aCGffgc6JiXK
+            =WGvY
+            -----END PGP MESSAGE-----
+          fp: 97035DBA837B72727A922DD16F33B78B284BE27E
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.1

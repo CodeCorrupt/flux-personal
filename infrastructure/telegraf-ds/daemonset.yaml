@@ -29,10 +29,6 @@ spec:
           - secretRef:
               name: influx-telegraf-ds-token
         env:
-        - name: HOSTIP
-          valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
         - name: HOSTNAME
           valueFrom:
             fieldRef:
