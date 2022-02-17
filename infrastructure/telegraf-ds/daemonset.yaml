@@ -61,4 +61,4 @@ spec:
           path: /var/run/utmp
       - name: config
         configMap:
-          name:  release-name-telegraf-ds
+          name:  telegraf-ds
