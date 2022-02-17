@@ -13,7 +13,7 @@ spec:
       labels:
         name: telegraf-ds
     spec:
-      serviceAccountName: telegraf-ds
+      # serviceAccountName: telegraf-ds
       containers:
       - name: telegraf-ds
         image: "telegraf:1.21"
