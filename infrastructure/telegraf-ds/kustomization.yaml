@@ -4,5 +4,6 @@ namespace: monitoring
 resources:
   - influx-api-token.yaml
   - config.yaml
-  - service-account.yaml
   - daemonset.yaml
+  # I cant get service accounts to work. Disabling here and the kubernetes telegraf plugin
+  # - service-account.yaml
