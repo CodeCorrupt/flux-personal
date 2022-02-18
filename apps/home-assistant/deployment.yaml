@@ -1,0 +1,50 @@
+---
+# Source: home-assistant/templates/common.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-assistant
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: home-assistant
+  template:
+    metadata:
+      labels:
+        name: home-assistant
+    spec:
+      containers:
+        - name: home-assistant
+          image: "homeassistant/home-assistant:2021.12.7"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: "TZ"
+              value: "US/Eastern"
+          ports:
+            - name: http
+              containerPort: 8123
+              protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: /config
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: 512Mi
+            requests:
+              cpu: "0.1"
+              memory: 256Mi
+          livenessProbe:
+            tcpSocket:
+              port: 8123
+            initialDelaySeconds: 0
+            failureThreshold: 3
+            timeoutSeconds: 1
+            periodSeconds: 10
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: home-assistant-config
