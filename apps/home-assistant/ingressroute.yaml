@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: home-assistant-frontend
+  namespace: home-assistant
+spec:
+  routes:
+  - kind: Rule
+    match: Host(`home.k3s`)
+    services:
+    - kind: Service
+      name: home-assistant
+      namespace: home-assistant
+      port: 80
