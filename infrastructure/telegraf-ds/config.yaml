@@ -49,8 +49,7 @@ data:
     [[inputs.disk]]
     ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
 
-# Disabling the kubernetes plugin because I cant get service accounts to work
-# [[inputs.kubernetes]]
-# url = "https://$HOSTIP:10250"
-# bearer_token = "/var/run/secrets/kubernetes.io/serviceaccount/token"
-# insecure_skip_verify = true
+    [[inputs.kubernetes]]
+    url = "https://$HOSTIP:10250"
+    bearer_token = "/var/run/secrets/kubernetes.io/serviceaccount/token"
+    insecure_skip_verify = true
