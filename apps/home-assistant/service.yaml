@@ -20,6 +20,7 @@ metadata:
   name: home-assistant-lb
 spec:
   type: LoadBalancer
+  loadBalancerIP: 10.0.0.51
   ports:
   - name: http
     port: 80
