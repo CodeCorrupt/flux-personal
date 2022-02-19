@@ -1,0 +1,34 @@
+---
+# Source: home-assistant/templates/common.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: godaddy-dyndns
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: godaddy-dyndns
+  template:
+    metadata:
+      labels:
+        name: godaddy-dyndns
+    spec:
+      containers:
+        - name: godaddy-dyndns
+          image: "parkerhemphill/godaddy-dns-updater:latest"
+          imagePullPolicy: IfNotPresent
+          envFrom:
+          - secretRef:
+              name: godaddy-secrets
+          env:
+            - name: "TIME_ZONE"
+              value: "US/Eastern"
+            - name: "DNS_CHECK"
+              value: "60"
+          resources:
+            limits:
+              cpu: "0.1"
+              memory: 256Mi
