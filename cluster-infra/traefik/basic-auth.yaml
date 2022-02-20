@@ -6,5 +6,4 @@ metadata:
   namespace: traefik-system
 spec:
   basicAuth:
-    namespace: traefik-system
     secret: traefik-auth
