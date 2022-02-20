@@ -18,6 +18,10 @@ metadata:
   name: traefik
   namespace: flux-system
 spec:
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
   interval: 10m0s
   path: ./cluster-infra/traefik
   prune: true

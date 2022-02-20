@@ -1,0 +1,10 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-auth-middleware
+  namespace: traefik-system
+spec:
+  basicAuth:
+    namespace: traefik-system
+    secret: traefik-auth
