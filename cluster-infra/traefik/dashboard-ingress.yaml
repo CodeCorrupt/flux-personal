@@ -10,8 +10,8 @@ spec:
   routes:
     - match: Host(`traefik.k3s`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
-      # middlewares:
-      #   - name: traefik-auth-middleware
+      middlewares:
+        - name: traefik-auth-middleware
       services:
         - name: api@internal
           kind: TraefikService

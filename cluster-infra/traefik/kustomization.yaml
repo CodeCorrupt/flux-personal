@@ -5,5 +5,5 @@ resources:
   - namespace.yaml
   - helm.yaml
   - auth-secret.yaml
-  # - basic-auth.yaml
+  - basic-auth.yaml
   - dashboard-ingress.yaml
