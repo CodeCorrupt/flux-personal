@@ -4,11 +4,16 @@ metadata:
   name: home-assistant-frontend
   namespace: home-assistant
 spec:
+  entryPoints:
+    - web
+    - websecure
   routes:
   - kind: Rule
-    match: Host(`home.k3s`)
+    match: Host(`ha.codecorrupt.com`)
     services:
     - kind: Service
       name: home-assistant
       namespace: home-assistant
       port: 80
+  tls:
+    certResolver: letsencrypt

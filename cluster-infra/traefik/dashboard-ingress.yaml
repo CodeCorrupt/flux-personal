@@ -8,12 +8,10 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`traefik.codecorrupt.com`) # && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    - match: Host(`traefik.k3s`)
       kind: Rule
       middlewares:
         - name: traefik-auth-middleware
       services:
         - name: api@internal
           kind: TraefikService
-  tls:
-    certResolver: letsencrypt
