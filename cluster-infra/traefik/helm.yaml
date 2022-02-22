@@ -26,6 +26,14 @@ spec:
     service:
       spec:
         loadBalancerIP: 10.0.0.50
+    additionalArguments:
+      - "--certificatesresolvers.letsencrypt.acme.email=tylerhoyt93+letsencrypt@gmail.com"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/data/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+    persistence:
+      enabled: true
+      storageClass: longhorn
+      size: 128Mi
   interval: 5m0s
   targetNamespace: traefik-system
 
