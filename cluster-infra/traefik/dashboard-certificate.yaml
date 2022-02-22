@@ -1,0 +1,13 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik.k3s
+  namespace: traefik-system
+spec:
+  dnsNames:
+    - traefik.k3s
+  secretName: traefik-k3s-cert
+  issuerRef:
+    name: self-signed
+    kind: ClusterIssuer

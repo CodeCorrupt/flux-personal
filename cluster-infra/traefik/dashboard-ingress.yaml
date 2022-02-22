@@ -8,10 +8,12 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`traefik.k3s`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    - match: Host(`traefik.k3s`) # && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
       kind: Rule
       middlewares:
         - name: traefik-auth-middleware
       services:
         - name: api@internal
           kind: TraefikService
+  tls:
+    secretName: traefik-k3s-cert

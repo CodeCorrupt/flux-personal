@@ -7,3 +7,4 @@ resources:
   - auth-secret.yaml
   - basic-auth.yaml
   - dashboard-ingress.yaml
+  - dashboard-certificate.yaml
