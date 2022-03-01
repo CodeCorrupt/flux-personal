@@ -1,5 +1,0 @@
-{
-    "yaml.schemas": {
-        "https://json.schemastore.org/yamllint.json": "file:///Users/tyler.hoyt/Documents/Personal/Programming/flux-personal/cluster-infra/traefik/dashboard-ingress.yaml"
-    }
-}
