@@ -24,6 +24,7 @@ spec:
   interval: 5m0s
   values:
     privileged: true
+    hostNetwork: true
     admin:
       existingSecret: "pihole-auth"
       passwordKey: "password"
