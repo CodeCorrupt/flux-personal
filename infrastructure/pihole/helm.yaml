@@ -23,8 +23,6 @@ spec:
         name: mojo2600
   interval: 5m0s
   values:
-    privileged: true
-    hostNetwork: true
     admin:
       existingSecret: "pihole-auth"
       passwordKey: "password"
@@ -44,8 +42,11 @@ spec:
       loadBalancerIP: 10.0.0.53
       annotations:
         metallb.universe.tf/allow-shared-ip: pihole-svc
-    serviceDhcp:
-      type: LoadBalancer
-      loadBalancerIP: 10.0.0.53
-      annotations:
-        metallb.universe.tf/allow-shared-ip: pihole-svc
+    # Couldn't get DHCP working properly
+    # privileged: true
+    # hostNetwork: true
+    # serviceDhcp:
+    #   type: LoadBalancer
+    #   loadBalancerIP: 10.0.0.53
+    #   annotations:
+    #     metallb.universe.tf/allow-shared-ip: pihole-svc
