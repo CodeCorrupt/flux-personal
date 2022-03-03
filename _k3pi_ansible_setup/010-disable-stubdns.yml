@@ -1,0 +1,33 @@
+# This will disable the stubdns from systemd-resolved
+# ref: https://www.turek.dev/posts/disable-systemd-resolved-cleanly/
+
+# This isn't used
+
+# These changes were required for pi-hole dns to be able to run in host networking mode, which was required
+# for DHCP.
+# Rather than fighting with pi-hole's DHCP (which required deploying with host networking)
+# I just bought a new router that was compatible with OpenWRT so I can set the DHCP settings there.
+
+# ---
+# - hosts: cluster
+#   become: yes
+#   tasks:
+#     - name: Create override config path
+#       file:
+#         path: "/etc/systemd/resolved.conf.d"
+#         state: directory
+#     - name: Create override config
+#       copy:
+#         dest: "/etc/systemd/resolved.conf.d/disable-stub.conf"
+#         content: |
+#           [Resolve]
+#           DNSStubListener=no
+#     - name: Move /etc/resolv.conf symlink
+#       file:
+#         src: /run/systemd/resolve/resolv.conf
+#         dest: /etc/resolv.conf
+#         state: link
+#     - name: Restart systemd-resolved
+#       ansible.builtin.systemd:
+#         name: systemd-resolved
+#         state: restarted
