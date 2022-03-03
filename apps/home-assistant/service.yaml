@@ -13,18 +13,3 @@ spec:
     protocol: TCP
   selector:
     name: home-assistant
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: home-assistant-lb
-spec:
-  type: LoadBalancer
-  loadBalancerIP: 10.0.0.51
-  ports:
-  - name: http
-    port: 80
-    targetPort: http
-    protocol: TCP
-  selector:
-    name: home-assistant
