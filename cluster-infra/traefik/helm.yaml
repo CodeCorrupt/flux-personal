@@ -15,6 +15,8 @@ metadata:
   namespace: traefik-system
 spec:
   releaseName: traefik
+  targetNamespace: traefik-system
+  interval: 5m0s
   chart:
     spec:
       chart: traefik
@@ -34,6 +36,16 @@ spec:
       enabled: true
       storageClass: longhorn
       size: 128Mi
-  interval: 5m0s
-  targetNamespace: traefik-system
+    deployment:
+      # The "volume-permissions" init container is required if you run into permission issues.
+      # Related issue: https://github.com/traefik/traefik/issues/6972
+      # Custom pod DNS policy. Apply if `hostNetwork: true`
+      # dnsPolicy: ClusterFirstWithHostNet
+      initContainers:
+        - name: volume-permissions
+          image: busybox:1.31.1
+          command: ["sh", "-c", "chmod -Rv 600 /data/*"]
+          volumeMounts:
+            - name: data
+              mountPath: /data
 
